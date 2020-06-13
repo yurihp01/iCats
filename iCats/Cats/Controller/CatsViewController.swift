@@ -17,6 +17,20 @@ class CatsViewController: UIViewController {
     
     var viewModel: CatsViewModel?
     weak var coordinator: CatsCoordinator?
+    
+    lazy var layout: UICollectionViewFlowLayout = {
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .horizontal
+
+        let width = UIScreen.main.bounds.width / 2
+        let height = UIScreen.main.bounds.height / 3
+        layout.itemSize = CGSize(width: width, height: height)
+
+        layout.minimumInteritemSpacing = 10
+        layout.minimumLineSpacing = 10
+
+        return layout
+    }()
 
     deinit {
         coordinator?.childDidFinish(coordinator)
@@ -34,6 +48,7 @@ class CatsViewController: UIViewController {
     private func configureCollectionView() {
         collectionView.dataSource = self
         collectionView.delegate = self
+        collectionView.collectionViewLayout = layout
     }
     
     private func getCats() {
