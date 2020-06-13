@@ -1,0 +1,6 @@
+framework module Pods_iCats_iCatsUITests {
+  umbrella header "Pods-iCats-iCatsUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}
